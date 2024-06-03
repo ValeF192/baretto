@@ -1,0 +1,172 @@
+body{
+    width: auto;
+    margin:18px auto;
+    font-family: 'San Francisco', Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+header#intestazione{
+    width: 100%;
+    text-align: center;
+    background-color: #397fbb;
+}
+
+header#intestazione h1{
+    margin-top: -1.1%;
+    padding: 10px;
+    color: #fff;
+    font-size: 1.5em;
+    background-color: #397fbb;
+}
+
+header#intestazione nav ul, #piedipagina nav ul{
+    list-style: none;
+}
+
+header#intestazione nav ul li{
+    padding :0;
+    margin : 0 22px 0 0;
+    display:inline;
+}
+
+header#intestazione nav{
+    width:auto;
+    height: auto;
+    background: #397fbb;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+header#intestazione  a {
+    color: white;
+    text-decoration: none;
+    background-color: #5a8ed1;
+    padding: 15px;
+    height: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    line-height: 50px;
+}
+
+section#post  {
+    float: right;
+    width:65%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color:rgb(0, 0, 0);
+}
+
+section#barralaterale{
+    float: left;
+    width: 15%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+section#misura{
+    width: 15%;
+    background-color: #f2f2f2;
+    float: left;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding: 20px;
+}
+
+footer#piedipagina nav  {
+    border-style: solid;
+    border-color: #397fbb;
+    height:300px;
+    margin-top: 63%;
+    background-color: #f2f2f2;
+    border-width: 1px 0px 0px 0px;
+    margin-bottom: -20px;
+}
+
+footer#piedipagina p  {
+    border-style: solid;
+    border-color: #397fbb;
+    text-align: center;
+    color:#333;
+    padding:10px;
+    background-color: #f2f2f2;
+    border-width: 0px 0px 1px 0px;
+    color: gray;
+    margin-bottom: -2%;
+}
+
+footer#piedipagina  a {
+    color: #333;
+    text-decoration: none;
+    margin-left:15%;
+    text-align: center;
+    line-height: 100px;
+    float:left;
+    display: block;
+    background: #f2f2f2;
+    text-align: center;
+}
+
+fieldset.info_personali ol{
+    background-color: #f2f2f2;
+    list-style: none;
+    clear: left;
+}
+
+fieldset.info_personali {
+    padding: 5px;
+    background-color: #f2f2f2;
+}
+
+legend{
+    background-color: #f2f2f2;
+    padding:10px;
+    float:left;
+}
+
+.login {
+    position: relative;
+    animation-name: successo_login;
+    animation-duration: 1500ms;
+    background-color: #5ebb39;
+    margin-top: -50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    clear: both;
+}
+
+.invisibile {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes successo_login {
+    0% {
+      height: 0px;
+    }
+    100% {
+        height: 15px;
+    }
+}
+
+.scrolling-section {
+    width: 300px;
+    height: 60px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+header#intestazione  a:hover {
+    background-color: #2b5f8e;
+}
+footer#piedipagina  a:hover {
+    background-color: #cbd0d4;
+}
