@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 
+<?php
+session_start();//il client mi sta inviando il cookie di sessione?
 
+if(!isset($_SESSION["email"])){//se la mail non è presente nell'array $session
+    header("Location: formregistrazione.php");//redirect alla registrazione
+}
+
+
+?>
 <script type="text/javascript">
 var maxcat=-1;
 var prezzototale=0;
@@ -137,13 +145,45 @@ function menuAttivo(menu){
     menuA=menu;
 }
 function aggiornaCarrello(menu, categoria, portata, quantita, prezzo) {
+
     var carrello = document.getElementById("carrello");
+//alert(intestazione);
+if(document.getElementById("int")==null){
+    elementoCarrello = document.createElement("tr");
+            elementoCarrello.id = "int";
+            var tdDenominazione = document.createElement("td");
+            tdDenominazione.textContent ="denominazione";
+
+
+            var tdQuanti = document.createElement("td");
+            tdQuanti.textContent ="quantità";
+
+            var tdUnitario = document.createElement("td");
+            tdUnitario.textContent ="prezzo unitario";
+
+
+            var tdtot = document.createElement("td");
+            tdtot.textContent ="prezzo";
+
+            elementoCarrello.appendChild(tdDenominazione);
+            elementoCarrello.appendChild(tdQuanti);
+            elementoCarrello.appendChild(tdUnitario);
+            elementoCarrello.appendChild(tdtot);
+            carrello.appendChild(elementoCarrello);
+}
+
+
+
     var idElemento = "carrello_" + menu + "_" + categoria + "_" + portata;
     var elementoCarrello = document.getElementById(idElemento);
+    var intestazione = document.getElementById("int");
    
     if (quantita > 0) {
         
         if (elementoCarrello == null) {
+
+           
+
             elementoCarrello = document.createElement("tr");
             elementoCarrello.id = idElemento;
 
@@ -159,11 +199,15 @@ if(categoria==0){
             tdQuantita.id = "quantita_" + idElemento;
             tdQuantita.textContent = quantita;
 
+            var tdPrezzoUnitario = document.createElement("td");
+            tdPrezzoUnitario.textContent = (prezzo * 1).toFixed(2) + "€";
+
             var tdPrezzo = document.createElement("td");
             tdPrezzo.textContent = (prezzo * quantita).toFixed(2) + "€";
 
             elementoCarrello.appendChild(tdNome);
             elementoCarrello.appendChild(tdQuantita);
+            elementoCarrello.appendChild(tdPrezzoUnitario);
             elementoCarrello.appendChild(tdPrezzo);
 
             carrello.appendChild(elementoCarrello);
@@ -174,25 +218,21 @@ if(categoria==0){
         }
     } else if (elementoCarrello != null) {
        // elementiC--;
+      
         carrello.removeChild(elementoCarrello);
     }
 
+    
+
     elementiC+=parseFloat(quantita);
+   
     document.getElementById("prodotti").textContent = elementiC;
 
 }
     </script>
 
 
-<?php
-session_start();//il client mi sta inviando il cookie di sessione?
 
-if(!isset($_SESSION["email"])){//se la mail non è presente nell'array $session
-    header("Location: formregistrazione.php");//redirect alla registrazione
-}
-
-
-?>
 
 <html lang="en">
 
@@ -239,7 +279,7 @@ while($rowm=$resultm->fetch_assoc()){
 //echo "<br><br><b>Denominazione: ".$rowm["denominazione"]."</b><br>";
 
 $sql= "SELECT * FROM portata inner join menu_has_portata on portata_idportata=portata.idportata where menu_idmenu=".$rowm["idmenu"]." order by categoria_idcategoria";//le righe dove la mail è uguale a qiuella inserita dall'utente
-//echo $sql;
+echo '<tr><th>quantità</th><th>denominazione</th><th>ingredienti</th><th>prezzo</th></tr>';
 $result=$conn->query($sql);//oggetto che rappresenta la risposta del db
 $conta=$result->num_rows;//utenti con quella mail
 $precategoria="";
@@ -365,7 +405,11 @@ while($row2=$result2->fetch_assoc()){
 }
 echo "</td>";
 
-echo '<td><strong><strong   id="prezzo_'.$rowm["idmenu"].'_'.$rowc["idcategoria"].'_'.$row["idportata"].'">'.$row["prezzo"].'</strong>&euro;</strong></td></tr>';
+echo '<td style="display: table-cell;
+vertical-align: inherit;
+font-weight: bold;
+text-align: center;
+unicode-bidi: isolate;"><strong><strong   id="prezzo_'.$rowm["idmenu"].'_'.$rowc["idcategoria"].'_'.$row["idportata"].'">'.$row["prezzo"].'</strong>&euro;</strong></td></tr>';
 
 
   
