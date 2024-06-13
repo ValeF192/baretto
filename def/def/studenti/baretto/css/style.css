@@ -45,6 +45,8 @@ header#intestazione a {
     margin: 0;
     display: inline-block;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 header#intestazione a:hover {
@@ -69,18 +71,20 @@ footer#piedipagina {
 footer#piedipagina nav ul {
     padding: 0;
     margin: 0;
+    
 }
 
 footer#piedipagina nav ul li {
     display: block;
     margin: 10px 0;
+    
 }
 
 footer#piedipagina a {
     color: #333;
     text-decoration: none;
     background: #f2f2f2;
-    padding: 10px;
+    
     display: block;
     text-align: center;
 }
@@ -157,7 +161,7 @@ td, th {
 @media (min-width: 600px) {
     section#post {
         width: 65%;
-        float: right;
+        float: left;
     }
     
     section#barralaterale {
@@ -249,4 +253,9 @@ section#post{
 
 th{
     text-align: center;
+}
+
+footer#piedipagina nav ul li{
+    width: 49%;
+  float:left;
 }
